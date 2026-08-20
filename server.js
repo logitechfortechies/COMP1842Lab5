@@ -1,16 +1,13 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3000;
 
 // 1. Load the model FIRST so it's available globally
 const Task = require('./api/models/todoListModel');
 
 // 2. Configure mongoose connection
-mongoose.connect('mongodb://localhost/Tododb', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => {
+mongoose.connect('mongodb://localhost/Tododb').then(() => {
     console.log("Successfully connected to the database");
 }).catch(err => {
     console.log('Could not connect to the database. Exiting now...', err);
